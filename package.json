@@ -1,0 +1,12 @@
+{
+  "name": "mock-generator",
+  "version": "0.1.0",
+  "description": "A simple Javascript library used to generate json mocks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Lucas Rocha",
+  "license": "Apache License 2.0"
+}
