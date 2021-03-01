@@ -2,6 +2,7 @@ const utils = require('../util/lib.utils');
 const jsonUtils = require('../util/json.utils');
 const int = require('./int');
 
+// random;[list_of_foo]
 exports = module.exports.getRandom = function (cond) {
     if (!utils.isSameCondOp(cond, 'random')) {
         return;
