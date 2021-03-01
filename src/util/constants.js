@@ -1483,5 +1483,7 @@ exports = module.exports.colors = [
   'spring green',
   'azure',
   'violet',
-  'rose'
+  'rose',
+  'white',
+  'black'
 ];

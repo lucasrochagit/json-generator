@@ -14,16 +14,16 @@ const address = require('./lib/address');
 const color = require('./lib/color');
 const random = require('./lib/random');
 
-function generateMock(model) {
+exports = module.exports.generateJson = function (schema) {
   const result = {};
-  const keys = Object.keys(model);
+  const keys = Object.keys(schema);
   keys.forEach(function (key) {
-    result[key] = getMockParam(model[key]);
+    result[key] = getJsonParam(schema[key]);
   });
   return result;
-}
+};
 
-function getMockParam(cond) {
+function getJsonParam(cond) {
   if (typeof cond === 'string') {
     const is_valid = utils.isValidCond(cond);
     if (is_valid) {
@@ -35,16 +35,16 @@ function getMockParam(cond) {
       const times = cond[0];
       if (Number.isInteger(times)) {
         return Array.from(Array(times), function () {
-          return getMockParam(cond[1]);
+          return getJsonParam(cond[1]);
         });
       }
     }
-    return cond.map(item => getMockParam(item));
+    return cond.map(item => getJsonParam(item));
   }
   else if (cond instanceof Object) {
     const keys = Object.keys(cond);
     return keys.reduce((acc, key) => {
-      acc[key] = getMockParam(cond[key]);
+      acc[key] = getJsonParam(cond[key]);
       return acc;
     }, {});
   }
@@ -104,35 +104,3 @@ function getStringCond(cond) {
     }
   }[key]();
 }
-
-console.log(
-  generateMock({
-    id: 'id;int;12',
-    children: [5, 'fullName'],
-    currentJob: {
-      title: 'Developer',
-      salary: 'money;'
-    },
-    jobs: [10,
-      {
-        title: 'random;["developer", "medic", "teacher", "CEO"]',
-        salary: 'money'
-      }
-    ],
-    maxRunDistance: 'float;1;20;1',
-    cpf: 'cpf',
-    cnpj: 'cnpj',
-    pretendSalary: 'money;',
-    age: 'int;20;80',
-    gender: 'gender',
-    firstName: 'firstName',
-    lastName: 'lastName',
-    fullName: 'fullName',
-    fullNameJose: 'fullName;Jose',
-    fullNameSilva: 'fullName;;Silva',
-    phone: 'phone;+55 (83) 9####-####',
-    address: 'address',
-    hairColor: 'color',
-    about: 'text;1'
-  })
-);

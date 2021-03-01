@@ -4,4 +4,4 @@ exports = module.exports.isValidJsonStr = function (str) {
     } catch (e) {
         return false;
     }
-}
+};

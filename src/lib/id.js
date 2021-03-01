@@ -2,8 +2,7 @@ const str = require('./str');
 const int = require('./int');
 const utils = require('../util/lib.utils');
 
-// TODO add ObjectId and GUID
-// id;type[string,int,objectId,guid];length *
+// id;type[string,int,objectId,guid];length
 exports = module.exports.getId = function (cond) {
   if (!utils.isSameCondOp(cond, 'id')) {
     return;
@@ -34,6 +33,12 @@ function getId(type, length) {
     int: function () {
       return getIntId(length);
     },
+    objectId: function () {
+      return getObjectId();
+    },
+    guid: function () {
+      return getGuidId();
+    }
   }[type]();
 }
 
@@ -44,3 +49,17 @@ function getIntId(length) {
 function getStrId(length) {
   return str.getStr(`str;${length};hex`);
 }
+
+function getObjectId() {
+  return function (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) {
+    return s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
+  }();
+}
+
+function getGuidId() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
