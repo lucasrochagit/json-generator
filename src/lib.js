@@ -10,6 +10,7 @@ const name = require('./lib/name');
 const phone = require('./lib/phone');
 const text = require('./lib/text');
 const money = require('./lib/money');
+const address = require('./lib/address');
 
 function generateMock(model) {
   const result = {};
@@ -66,6 +67,9 @@ function getMockParam(cond) {
     money: function () {
       return money.getMoney(cond);
     },
+    address: function () {
+      return address.getAddress(cond);
+    }
   }[key]();
 }
 
@@ -84,6 +88,7 @@ console.log(
     fullNameSilva: 'fullName;;Silva',
     phone: 'phone;+55 (83) 9####-####',
     paras: 'text;1',
+    address: 'address;221 Baker Street',
   })
 );
 
@@ -91,7 +96,6 @@ console.log(
 // date;min;max;format[utc,date,iso,millis]
 // color
 // url;domain;path
-// address;mask(street, number - city - state - country)
 // random;[list of anything]
 // support for array params of anything
 // support for object params

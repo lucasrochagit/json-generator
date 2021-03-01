@@ -1,6 +1,6 @@
 const utils = require('../util/lib.utils');
 
-// int;min;max;size
+// int;min;max
 exports = module.exports.getInt = function (cond) {
   if (!utils.isSameCondOp(cond, 'int')) {
     return;
@@ -19,9 +19,5 @@ exports = module.exports.getInt = function (cond) {
   const max = !!params_max ? params_max : default_max;
   const size = !!params_size ? params_size : default_size;
 
-  const number = Math.floor(min + Math.random() * (max + 1 - min));
-
-  return number > size && size > 0
-    ? parseInt(`${number}`.substring(0, size), 10)
-    : number;
+  return Math.floor(min + Math.random() * (max + 1 - min));
 };
