@@ -11,6 +11,8 @@ const phone = require('./lib/phone');
 const text = require('./lib/text');
 const money = require('./lib/money');
 const address = require('./lib/address');
+const color = require('./lib/color');
+const random = require('./lib/random');
 
 function generateMock(model) {
   const result = {};
@@ -22,10 +24,34 @@ function generateMock(model) {
 }
 
 function getMockParam(cond) {
-  const is_valid = utils.isValidCond(cond);
-  if (!is_valid) {
-    return;
+  if (typeof cond === 'string') {
+    const is_valid = utils.isValidCond(cond);
+    if (is_valid) {
+      return getStringCond(cond);
+    }
   }
+  else if (cond instanceof Array) {
+    if (cond.length === 2) {
+      const times = cond[0];
+      if (Number.isInteger(times)) {
+        return Array.from(Array(times), function () {
+          return getMockParam(cond[1]);
+        });
+      }
+    }
+    return cond.map(item => getMockParam(item));
+  }
+  else if (cond instanceof Object) {
+    const keys = Object.keys(cond);
+    return keys.reduce((acc, key) => {
+      acc[key] = getMockParam(cond[key]);
+      return acc;
+    }, {});
+  }
+  return cond;
+}
+
+function getStringCond(cond) {
   const key = utils.getKey(cond);
   return {
     id: function () {
@@ -69,6 +95,12 @@ function getMockParam(cond) {
     },
     address: function () {
       return address.getAddress(cond);
+    },
+    color: function () {
+      return color.getColor(cond);
+    },
+    random: function () {
+      return random.getRandom(cond);
     }
   }[key]();
 }
@@ -76,9 +108,21 @@ function getMockParam(cond) {
 console.log(
   generateMock({
     id: 'id;int;12',
+    children: [5, 'fullName'],
+    currentJob: {
+      title: 'Developer',
+      salary: 'money;'
+    },
+    jobs: [10,
+      {
+        title: 'random;["developer", "medic", "teacher", "CEO"]',
+        salary: 'money'
+      }
+    ],
+    maxRunDistance: 'float;1;20;1',
     cpf: 'cpf',
     cnpj: 'cnpj',
-    salary: 'money;',
+    pretendSalary: 'money;',
     age: 'int;20;80',
     gender: 'gender',
     firstName: 'firstName',
@@ -87,15 +131,8 @@ console.log(
     fullNameJose: 'fullName;Jose',
     fullNameSilva: 'fullName;;Silva',
     phone: 'phone;+55 (83) 9####-####',
-    paras: 'text;1',
-    address: 'address;221 Baker Street',
+    address: 'address',
+    hairColor: 'color',
+    about: 'text;1'
   })
 );
-
-// TODO Add follow types:
-// date;min;max;format[utc,date,iso,millis]
-// color
-// url;domain;path
-// random;[list of anything]
-// support for array params of anything
-// support for object params

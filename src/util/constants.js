@@ -12,7 +12,9 @@ exports = module.exports.condition_list = [
   'phone',
   'text',
   'money',
-  'address'
+  'address',
+  'color',
+  'random'
 ];
 
 exports = module.exports.full_names_list = [
@@ -1467,4 +1469,19 @@ exports = module.exports.countries = [
   'Jamaica',
   'Falkland Islands (Malvinas)',
   'Andorra'
+];
+
+exports = module.exports.colors = [
+  'red',
+  'green',
+  'blue',
+  'cyan',
+  'magenta',
+  'yellow',
+  'orange',
+  'chartreuse green',
+  'spring green',
+  'azure',
+  'violet',
+  'rose'
 ];
