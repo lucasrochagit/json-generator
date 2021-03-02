@@ -81,6 +81,7 @@ You can use the functions separately, to generate resources:
 
 ```js 
 const {
+    getId,
     getFullName,
     getInt,
     getMaskInt,
@@ -97,7 +98,7 @@ const {
 } = require('json-generator');
 
 console.log({
-    id: getCpf('objectId'),
+    id: getId('objectId'),
     children: Array.from(Array(5), function () {
         return {
             name: getFullName(),
