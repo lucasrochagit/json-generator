@@ -1,7 +1,7 @@
-const utils = require('../util/lib.utils');
+const libUtils = require('../util/lib.utils');
 
 exports = module.exports.getGender = function (cond) {
-  if (!utils.isSameCondOp(cond, 'gender')) {
+  if (!libUtils.isSameCondOp(cond, 'gender')) {
     return;
   }
 

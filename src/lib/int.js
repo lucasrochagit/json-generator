@@ -1,8 +1,8 @@
-const utils = require('../util/lib.utils');
+const libUtils = require('../util/lib.utils');
 
 // int;min;max
 exports = module.exports.getInt = function (cond) {
-  if (!utils.isSameCondOp(cond, 'int')) {
+  if (!libUtils.isSameCondOp(cond, 'int')) {
     return;
   }
 
@@ -10,7 +10,7 @@ exports = module.exports.getInt = function (cond) {
   const default_max = Number.MAX_SAFE_INTEGER;
   const default_size = 1;
 
-  const params = utils.getParams(cond);
+  const params = libUtils.getParams(cond);
   const params_min = parseInt(params[1], 10);
   const params_max = parseInt(params[2], 10);
   const params_size = parseInt(params[3], 10);

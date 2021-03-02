@@ -9,12 +9,12 @@ exports = module.exports.condition_list = [
   'firstName',
   'lastName',
   'fullName',
-  'phone',
   'text',
   'money',
   'address',
   'color',
-  'random'
+  'random',
+  'maskInt'
 ];
 
 exports = module.exports.full_names_list = [
@@ -1485,5 +1485,7 @@ exports = module.exports.colors = [
   'violet',
   'rose',
   'white',
-  'black'
+  'black',
+  'brown',
+  'grey',
 ];

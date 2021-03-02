@@ -11,8 +11,8 @@ npm i json-generator --save
 
 ### Usage Example
 ```js 
-const jsonGenerator  = require('json-generator');
-const jsonMock = jsonGenerator.generateJson({
+const { generateJson }  = require('json-generator');
+console.log(generateJson({
   id: "id;objectId",
   children: [
     5,
@@ -23,10 +23,10 @@ const jsonMock = jsonGenerator.generateJson({
   ],
   currentJob: {
     title: "Developer",
-    salary: "money;"
+    salary: "mask;"
   },
   jobs: [
-    3,
+    2,
     {
       title: 'random;["developer", "medic", "teacher", "CEO"]',
       salary: "money"
@@ -40,11 +40,93 @@ const jsonMock = jsonGenerator.generateJson({
   gender: "gender",
   firstName: "firstName",
   lastName: "lastName",
-  phone: "phone;+55 (83) 9####-####",
+  phone: "maskInt;+55 (83) 9####-####",
   address: "address",
   hairColor: "color"
-});
+}));
   
+/**  
+ * Result:  
+{
+  id: "603d61c3a948d65e896a9675",
+  children: [
+    { name: "Riley Kline", age: 6 },
+    { name: "Duffy Reed", age: 8 },
+    { name: "Chance Alexander", age: 4 },
+    { name: "Leslie Ellison", age: 6 },
+    { name: "Shiloh Tran", age: 7 }
+  ],
+  currentJob: { title: "Developer", salary: "R$ 1.4577,25" },
+  jobs: [
+    { title: "medic", salary: "R$ 3.3749,05" },
+    { title: "developer", salary: "R$ 2.1712,49" }
+  ],
+  maxRunDistance: 6.7,
+  cpf: "263.918.428-84",
+  cnpj: "87.371.227/0001-21",
+  pretendSalary: "R$ 9.5336,56",
+  age: 30,
+  gender: "male",
+  firstName: "Donovan",
+  lastName: "Bright",
+  phone: "+55 (83) 91770-4875",
+  address: "799 Applegate Court - Verdi, Pennsylvania, Niue.",
+  hairColor: "black"
+};
+
+ */  
+```  
+
+You can use the functions separately, to generate resources:
+
+```js 
+const {
+    getFullName,
+    getInt,
+    getMaskInt,
+    getFloat,
+    getCpf,
+    getCnpj,
+    getRandom,
+    getMoney,
+    getGender,
+    getFirstName,
+    getLastName,
+    getAddress,
+    getColor
+} = require('json-generator');
+
+console.log({
+    id: getCpf('objectId'),
+    children: Array.from(Array(5), function () {
+        return {
+            name: getFullName(),
+            age: getInt(0, 10)
+        };
+    }),
+    currentJob: {
+        title: "Developer",
+        salary: getMoney()
+    },
+    jobs: Array.from(Array(2), function () {
+        return {
+            title: getRandom(["developer", "medic", "teacher", "CEO"]),
+            salary: getMoney()
+        };
+    }),
+    maxRunDistance: getFloat(1, 20, 1),
+    cpf: getCpf(),
+    cnpj: getCnpj(),
+    pretendSalary: getMoney(),
+    age: getInt(20, 80),
+    gender: getGender(),
+    firstName: getFirstName(),
+    lastName: getLastName(),
+    phone: getMaskInt('+55 (83) 9####-####'),
+    address: getAddress(),
+    hairColor: getColor()
+});
+
 /**  
  * Result:  
 {

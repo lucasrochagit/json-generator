@@ -1,10 +1,10 @@
 const str = require('./str');
 const int = require('./int');
-const utils = require('../util/lib.utils');
+const libUtils = require('../util/lib.utils');
 
 // id;type[string,int,objectId,guid];length
 exports = module.exports.getId = function (cond) {
-  if (!utils.isSameCondOp(cond, 'id')) {
+  if (!libUtils.isSameCondOp(cond, 'id')) {
     return;
   }
 
@@ -12,7 +12,7 @@ exports = module.exports.getId = function (cond) {
   const default_type = 'str';
   const valid_types = ['string', 'int', 'objectId', 'guid'];
 
-  const params = utils.getParams(cond);
+  const params = libUtils.getParams(cond);
   const params_type = params[1];
   const params_length = parseInt(params[2], 10);
 

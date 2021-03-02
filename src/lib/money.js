@@ -1,6 +1,7 @@
 const int = require('./int');
 const libUtils = require('../util/lib.utils');
 const numberUtils = require('../util/number.utils');
+const maskInt = require('./mask.int');
 
 // money;mask(R$ #.####,##)
 exports = module.exports.getMoney = function (cond) {
@@ -14,18 +15,5 @@ exports = module.exports.getMoney = function (cond) {
   const params_mask = params[1];
   const mask = !!params_mask ? params_mask : default_mask;
 
-  const money_chars = [...mask];
-
-  const money_result = money_chars.map(function (char) {
-    if (char !== '#') {
-      const int_char = parseInt(char, 10);
-      if (numberUtils.isInteger(int_char)) {
-        return int_char;
-      }
-      return char;
-    }
-    return int.getInt('int;0;9');
-  });
-
-  return money_result.join('');
+  return maskInt.getMaskInt(`maskInt;${mask}`);
 };

@@ -1,9 +1,9 @@
 const crypto = require('crypto');
-const utils = require('../util/lib.utils');
+const libUtils = require('../util/lib.utils');
 
 // str;length;encode
 exports = module.exports.getStr = function (cond) {
-  if (utils.isSameCondOp(cond, 'str')) {
+  if (!libUtils.isSameCondOp(cond, 'str')) {
     return;
   }
 
@@ -11,7 +11,7 @@ exports = module.exports.getStr = function (cond) {
   const valid_encodes = ['ascii', 'utf8', 'utf16le', 'base64', 'binary', 'hex'];
   const default_encode = 'hex';
 
-  const params = utils.getParams(cond);
+  const params = libUtils.getParams(cond);
   const params_length = parseInt(params[1], 10);
   const params_encode = params[2];
 

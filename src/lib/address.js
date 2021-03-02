@@ -1,10 +1,10 @@
-const utils = require('../util/lib.utils');
+const libUtils = require('../util/lib.utils');
 const constants = require('../util/constants');
 const int = require('./int');
 
 // address;mask(street, number - city - state - country)
 exports = module.exports.getAddress = function (cond) {
-    if (!utils.isSameCondOp(cond, 'address')) {
+    if (!libUtils.isSameCondOp(cond, 'address')) {
         return;
     }
 

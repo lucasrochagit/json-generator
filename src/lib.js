@@ -1,20 +1,40 @@
-const cnpj = require('./lib/cnpj');
-const cpf = require('./lib/cpf');
-const float = require('./lib/float');
-const id = require('./lib/id');
-const int = require('./lib/int');
-const str = require('./lib/str');
-const gender = require('./lib/gender');
+const {
+  cnpj,
+  cpf,
+  float,
+  id,
+  int,
+  str,
+  gender,
+  name,
+  maskInt,
+  text,
+  money,
+  address,
+  color,
+  random
+} = require('./lib/exports');
 const utils = require('./util/lib.utils');
-const name = require('./lib/name');
-const phone = require('./lib/phone');
-const text = require('./lib/text');
-const money = require('./lib/money');
-const address = require('./lib/address');
-const color = require('./lib/color');
-const random = require('./lib/random');
 
-exports = module.exports.generateJson = function (schema) {
+exports = module.exports = {
+  getJson,
+  cnpj,
+  cpf,
+  float,
+  id,
+  int,
+  str,
+  gender,
+  name,
+  maskInt,
+  text,
+  money,
+  address,
+  color,
+  random
+};
+
+function getJson(schema) {
   const result = {};
   const keys = Object.keys(schema);
   keys.forEach(function (key) {
@@ -84,8 +104,8 @@ function getStringCond(cond) {
     fullName: function () {
       return name.getFullName(cond);
     },
-    phone: function () {
-      return phone.getPhone(cond);
+    maskInt: function () {
+      return maskInt.getMaskInt(cond);
     },
     text: function () {
       return text.getText(cond);

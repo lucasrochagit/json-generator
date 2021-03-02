@@ -1,9 +1,9 @@
-const utils = require('../util/lib.utils');
+const libUtils = require('../util/lib.utils');
 const constants = require('../util/constants');
 const int = require('./int');
 
 exports = module.exports.getColor = function (cond) {
-    if (!utils.isSameCondOp(cond, 'color')) {
+    if (!libUtils.isSameCondOp(cond, 'color')) {
         return;
     }
 

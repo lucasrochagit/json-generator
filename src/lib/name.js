@@ -1,9 +1,9 @@
-const utils = require('../util/lib.utils');
+const libUtils = require('../util/lib.utils');
 const names = require('../util/constants').full_names_list;
 const int = require('./int');
 
 exports = module.exports.getFirstName = function (cond) {
-  if (!utils.isSameCondOp(cond, 'firstName')) {
+  if (!libUtils.isSameCondOp(cond, 'firstName')) {
     return;
   }
 
@@ -12,7 +12,7 @@ exports = module.exports.getFirstName = function (cond) {
 };
 
 exports = module.exports.getLastName = function (cond) {
-  if (!utils.isSameCondOp(cond, 'lastName')) {
+  if (!libUtils.isSameCondOp(cond, 'lastName')) {
     return;
   }
 
@@ -22,11 +22,11 @@ exports = module.exports.getLastName = function (cond) {
 
 // fullName;firstName;lastName
 exports = module.exports.getFullName = function (cond) {
-  if (!utils.isSameCondOp(cond, 'fullName')) {
+  if (!libUtils.isSameCondOp(cond, 'fullName')) {
     return;
   }
 
-  const params = utils.getParams(cond);
+  const params = libUtils.getParams(cond);
   const params_first_name = params[1];
   const params_last_name = params[2];
 
