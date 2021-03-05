@@ -20,5 +20,7 @@ declare namespace jsonGenerator {
         getRandom(list?: Array<any>): any;
         getStr(length?: number, encode?: string): string;
         getText(paragraphs?: number, phrases?: number, words?: number): string;
+        isValidCpf(cpf: string): boolean;
+        isValidCnpj(cnpj: string): boolean;
     }
 }

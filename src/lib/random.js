@@ -16,6 +16,10 @@ exports = module.exports.getRandom = function (cond) {
     }
 
     const list = JSON.parse(list_str);
+
+    if (!(list instanceof Array)) {
+        return undefined;
+    }
     const random_index = int.getInt(`int;0;${list.length - 1}`);
 
     return list[random_index];

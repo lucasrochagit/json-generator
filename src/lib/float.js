@@ -19,6 +19,6 @@ exports = module.exports.getFloat = function (cond) {
   const max = !!params_max ? params_max : default_max;
   const decimals = !!params_decimals ? params_decimals : default_decimals;
 
-  const number = Math.random() * max + min;
+  const number = min + Math.random() * (max + 1 - min);
   return parseFloat(number.toFixed(decimals));
 };

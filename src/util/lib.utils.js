@@ -1,7 +1,7 @@
 const condition_list = require('./constants').condition_list;
 
 exports = module.exports.isSameCondOp = function (str, op) {
-  return str.split(';')[0] === op;
+  return this.getKey(str) === op;
 };
 
 exports = module.exports.getKey = function (cond) {

@@ -1,4 +1,4 @@
-const numberUtils = require('./../util/number.utils');
+const stringUtils = require('./../util/string.utils');
 
 // cpf format: abc.def.ghi-jk (with mask) or abcdefghijk (without mask)
 exports = module.exports.getCpf = function (useMask = true) {
@@ -31,15 +31,11 @@ exports = module.exports.getCpf = function (useMask = true) {
 };
 
 exports = module.exports.isValidCpf = function (cpf) {
-  if (typeof cpf === 'number') {
-    return isValidCpf(`${number}`);
-  }
-
   if (typeof cpf !== 'string') {
     return false;
   }
 
-  const only_num = numberUtils.onlyNumbers(cpf);
+  const only_num = stringUtils.onlyNumbers(cpf);
 
   if (only_num.length !== 11) {
     return false;

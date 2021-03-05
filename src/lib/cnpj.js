@@ -49,10 +49,6 @@ exports = module.exports.getCnpj = function (useMask = true) {
 };
 
 exports = module.exports.isValidCnpj = function (cnpj) {
-  if (typeof cnpj === 'number') {
-    return isValidCnpj(`${cnpj}`);
-  }
-
   if (typeof cnpj !== 'string') {
     return false;
   }

@@ -1,10 +1,13 @@
 {
   "name": "json-generator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A simple Javascript library used to generate json mocks.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --detectOpenHandles",
+    "test:cov": "npm run test -- --coverage",
+    "test:unit": "npm run test:path -- test/unit",
+    "test:path": "jest --coverage=false --verbose"
   },
   "repository": {
     "type": "git",
@@ -22,5 +25,8 @@
   "engines": {
     "node": ">=8"
   },
-  "license": "Apache License 2.0"
+  "license": "Apache License 2.0",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
 }

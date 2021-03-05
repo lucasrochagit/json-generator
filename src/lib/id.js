@@ -9,7 +9,7 @@ exports = module.exports.getId = function (cond) {
   }
 
   const default_length = 24;
-  const default_type = 'str';
+  const default_type = 'string';
   const valid_types = ['string', 'int', 'objectId', 'guid'];
 
   const params = libUtils.getParams(cond);
@@ -27,7 +27,7 @@ exports = module.exports.getId = function (cond) {
 
 function getId(type, length) {
   return {
-    str: function () {
+    string: function () {
       return getStrId(length);
     },
     int: function () {
@@ -42,17 +42,20 @@ function getId(type, length) {
   }[type]();
 }
 
-function getIntId(length) {
-  return int.getInt(`int;;;${length}`);
-}
 
 function getStrId(length) {
   return str.getStr(`str;${length};hex`);
 }
 
+function getIntId(length) {
+  return int.getInt(`int;;;${length}`);
+}
+
 function getObjectId() {
   return function (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) {
-    return s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
+    return s(d.now() / 1000) + ' '.repeat(h).replace(/./g, function () {
+      return s(m.random() * h);
+    });
   }();
 }
 
@@ -62,4 +65,3 @@ function getGuidId() {
     return v.toString(16);
   });
 }
-

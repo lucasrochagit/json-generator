@@ -51,5 +51,11 @@ exports = module.exports = {
     },
     getText: function (paragraphs = 1, phrases = 2, words = 5) {
         return lib.text.getText(`text;${paragraphs};${phrases};${words}`);
+    },
+    isValidCpf: function (cpf) {
+        return lib.cpf.isValidCpf(cpf);
+    },
+    isValidCnpj: function (cpnj) {
+        return lib.cnpj.isValidCnpj(cpnj);
     }
 };

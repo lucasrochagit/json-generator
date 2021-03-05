@@ -9,7 +9,7 @@ exports = module.exports.getMoney = function (cond) {
     return;
   }
 
-  const default_mask = 'R$ #.####,##';
+  const default_mask = 'R$ #.###,##';
 
   const params = cond.split(';');
   const params_mask = params[1];
