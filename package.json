@@ -1,6 +1,6 @@
 {
   "name": "json-generator",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A simple Javascript library used to generate json mocks.",
   "main": "index.js",
   "scripts": {
