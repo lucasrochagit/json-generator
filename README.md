@@ -1,7 +1,7 @@
 # Json Generator
 A simple library to generate json mocks.
 
-[![License][license-image]][license-url] [![NPM Version][npm-image]][npm-url]  [![Dependencies][dependencies-image]][dependencies-url] [![DependenciesDev][dependencies-dev-image]][dependencies-dev-url] [![Releases][releases-image]][releases-url]  [![Contributors][contributors-image]][contributors-url] [![Issues][issues-image]][issues-url]
+[![License][license-image]][license-url] [![NPM Version][npm-image]][npm-url]  [![Dependencies][dependencies-image]][dependencies-url] [![DependenciesDev][dependencies-dev-image]][dependencies-dev-url] [![Releases][releases-image]][releases-url]  [![Contributors][contributors-image]][contributors-url] [![Issues][issues-image]][issues-url] [![NPM Downloads][npm-downloads-image]][npm-downloads-url] 
 
 ## Installing  
 Use the npm command to install this library into your project:  
@@ -188,10 +188,12 @@ Distributed under the APACHE License. See `LICENSE` for more information.
 [license-url]: https://github.com/lucasrochagit/json-generator/blob/main/LICENSE
 [npm-image]: https://img.shields.io/npm/v/json-generator.svg?color=red&logo=npm
 [npm-url]: https://npmjs.org/package/json-generator
+[npm-downloads-image]: https://img.shields.io/npm/dm/json-generator.svg
+[npm-downloads-url]: https://npmjs.org/package/json-generator
 [dependencies-image]: https://shields.io/badge/dependencies-0-green
 [dependencies-url]: https://shields.io/badge/dependencies-0-green
 [dependencies-dev-image]: https://shields.io/badge/devDependencies-0-green
-[dependencies-dev-url]: https://shields.io/badge/devDependencies-0-green
+[dependencies-dev-url]: https://shields.io/badge/devDependencies-1-green
 [releases-image]: https://img.shields.io/github/release-date/lucasrochagit/json-generator.svg
 [releases-url]: https://github.com/lucasrochagit/json-generator/releases
 [contributors-image]: https://img.shields.io/github/contributors/lucasrochagit/json-generator.svg?color=green
